@@ -1,12 +1,11 @@
 # IAM
-IAM AWS
 #!/bin/bash
 
 gen_pw() {
   head -c 9 /dev/urandom | uuencode -m - | head -2 | tail -1 |  tr '1IlO0' '$/%&#'
 }
 
-while read user  # I assume a users text file containing one user per line here
+while read user  # Texto que contiene un usuario por linea
 do
   password=$(gen_pw)
   aws iam create-user --user-name "$user"
